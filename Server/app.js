@@ -1,13 +1,32 @@
 import express from "express";
-import userRouter from "./routes/users/user.js";
-const app = express();
-app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
+import userRouter from "./routes/user.js";
 
+import cors from 'cors'
+import morgan from 'morgan'
+import cookieParser from 'cookie-parser'
+import fileUpload from 'express-fileupload'
+
+const app = express();
+
+// morgan middleware
+app.use(morgan("tiny"))
+
+// Global middlewares
+app.use(express.json());
+app.use(express.urlencoded({extended: true,}))
+app.use(cors())
+
+
+// cookies and file middlewares
+app.use(cookieParser())
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}))
+
+
+// Routing Middlewares
 app.use("/api/user", userRouter);
+
 
 export default app;
