@@ -1,14 +1,22 @@
 
 import CustomError from '../utils/customError.js'
+import User from '../model/user.js'
+import BigPromise from './bigPromise.js'
+import CustomError from '../utils/customError.js'
+import jwt from 'jsonwebtoken'
 
 
-export const isLoggedIn = async(req,res,next)=>{
-    const token = req.cookies.token || req.header("Authorization").replace("Bearer ", " ")
 
+export const isLoggedIn = BigPromise(async(req,res,next)=>{
+    const token = req.cookies.token || req.headers.authorization.split(" ")[1] || req.header("Authorization")?.replace("Bearer ", " ") 
+    // const token = req.headers.authorization.split(" ")[1];
+    console.log(token)
 
+    
     if(!token) return next(new CustomError("Login first to access this page", 401))
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    console.log(decoded)
 
 
     const thisIsThatUser = await User.findById(decoded.id)
@@ -17,4 +25,4 @@ export const isLoggedIn = async(req,res,next)=>{
     req.user = thisIsThatUser
 
     next()
-}
+})
