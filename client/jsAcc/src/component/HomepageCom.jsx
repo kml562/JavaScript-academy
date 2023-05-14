@@ -59,7 +59,9 @@ export default function HompageCom() {
             designed to help you master the language and become a proficient
             JavaScript developer. Browse our well-organized and concise notes on
             various topics, and take your coding skills to the next level. Happy
-            learning!
+              learning!
+              
+              Whether you're a beginner just starting out with JavaScript or an experienced developer looking to hone your skills, the JavaScript Academy has something for you. So sign up today and start your journey to becoming a JavaScript expert!
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
