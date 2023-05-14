@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import Navbar from '../component/Navbar';
 
+
 export default function Login() {
   return (<>
 <Navbar/>

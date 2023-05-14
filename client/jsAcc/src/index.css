@@ -14,6 +14,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -67,3 +69,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* .home_image_box{
+  width: 300px !important;
+  height: 250px !important;
+}
+
+.home_image{
+  width:100%  !important;
+  height: 100% !important;
+  object-fit: cover !important;
+} */

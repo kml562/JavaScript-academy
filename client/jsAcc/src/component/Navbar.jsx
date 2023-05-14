@@ -18,7 +18,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-import { Link as LinkRouter, useHref } from "react-router-dom";
+import { Link as LinkRouter } from "react-router-dom";
 import logo from "../png/logo.png";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
@@ -61,7 +61,9 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Image h="5%" w="5%" src={logo}  />
+            <LinkRouter to="/"> 
+              <Image h="5%" w="5%" src={logo}  />
+            </LinkRouter>
 
             <HStack
               as={"nav"}

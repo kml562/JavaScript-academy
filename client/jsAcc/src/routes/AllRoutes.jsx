@@ -5,10 +5,11 @@ import Login from "../pages/Login";
 import Signup from "../pages/SignUp";
 
 const AllRoutes = () => {
+  
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/welcome" element={<Homepage />} />
         <Route path="/login" element={< Login />} />
         <Route path="/signup" element={< Signup />} />
       </Routes>
