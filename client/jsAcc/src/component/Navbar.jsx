@@ -21,6 +21,7 @@ import {
 import { Link as LinkRouter } from "react-router-dom";
 import logo from "../png/logo.png";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { Link as LinkRoute, useLocation, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -52,20 +53,22 @@ export default function Navbar() {
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"/dashboard"}
-  >
+              <LinkRoute
+              px={2}
+              py={1}
+              rounded={"md"}
+              _hover={{
+                textDecoration: "none",
+                bg: useColorModeValue("gray.200", "gray.700"),
+              }}
+              href={"/dashboard"}
+              to="/dashboard"
+            >
     {"Dashboard"}
-              </Link>
-              <Link
+              </LinkRoute>
+              <LinkRoute
     px={2}
+    to="/project"
     py={1}
     rounded={"md"}
     _hover={{
@@ -75,19 +78,20 @@ export default function Navbar() {
     href={"#"}
   >
     {"Project"}
-              </Link>
-              <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {"Team"}
-  </Link>
+              </LinkRoute>
+            <LinkRoute
+              px={2}
+              py={1}
+              to="/team"
+              rounded={"md"}
+              _hover={{
+                textDecoration: "none",
+                bg: useColorModeValue("gray.200", "gray.700"),
+              }}
+              href={"#"}
+            >
+              {"Team"}
+          </LinkRoute>
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
