@@ -1,14 +1,13 @@
 import React from 'react'
 import Navbar from '../component/Navbar'
 
-const Team = () => {
+const Project = () => {
   return (
     <>
       <Navbar />
-
+    
     </>
-
   )
 }
 
-export default Team
+export default Project

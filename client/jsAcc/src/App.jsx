@@ -8,25 +8,31 @@ import { useLocation, useNavigate } from "react-router";
 function App() {
   const location = useLocation();
   const navigate = useNavigate()
-  const routeName = location.pathname; 
+  const routeName = location.pathname;
 
-  console.log(routeName)
+  const token = localStorage.getItem('token'); // get token from local storage
+  // const user = JSON.parse(localStorage.getItem('user')); // get user data from local storage
+
 
   useEffect(()=>{
     if(routeName==='/'){
-      const token = localStorage.getItem('token'); // get token from local storage
-      const user = JSON.parse(localStorage.getItem('user')); // get user data from local storage
-
-      if(!token && !user){
-        // getEvents()
+      if(token){
+        console.log()
         navigate('/');
+      }else{
+        navigate('/welcome');
       }
-      else{
-        console.log("Yoo")
+    }else if(routeName === '/welcome'){
+      if(token){
+        console.log()
+        navigate('/');
+      }else{
         navigate('/welcome');
       }
     }
-  },[])
+  },[routeName])
+
+
 
   return (
     <>
