@@ -49,7 +49,7 @@ export default function Navbar() {
         bg={useColorModeValue("gray.100", "gray.900")}
         px={4}
         // border={"1px solid red"}
-        w="100vw"
+        // w="100vw"
         // m="auto"
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
