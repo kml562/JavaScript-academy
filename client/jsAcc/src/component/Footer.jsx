@@ -1,122 +1,99 @@
 import {
-    Box,
-    Container,
-    Stack,
-    SimpleGrid,
-    Text,
-    Link,
-    VisuallyHidden,
-    chakra,
-    useColorModeValue,
-    Image,
-  } from "@chakra-ui/react";
-  import { FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
-  
-  const ListHeader = ({ children }) => {
-    return (
-      <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
-        {children}
-      </Text>
-    );
-  };
-  
-  const SocialButton = ({ children, label, href }) => {
-    return (
-      <chakra.button
-        bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
-        rounded={"full"}
-        w={8}
-        h={8}
-        cursor={"pointer"}
-        as={"a"}
-        href={href}
-        display={"inline-flex"}
-        alignItems={"center"}
-        justifyContent={"center"}
-        transition={"background 0.3s ease"}
-        _hover={{
-          bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-        }}
-      >
-        <VisuallyHidden>{label}</VisuallyHidden>
-        {children}
-      </chakra.button>
-    );
-  };
-  
-  export default function Footer() {
-    return (
-      <Box bg={"#262a3b"} color={"white"} mt={"50px"}>
-        <Container as={Stack} maxW={"6xl"} py={10} pt="100px">
-          <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
-            <Stack align={"flex-start"}>
-              <ListHeader>The Product</ListHeader>
-              <Link href={"#"}>For individuals</Link>
-              <Link href={"#"}>For Professionals</Link>
-              <Link href={"#"}>Privacy</Link>
-              <Link href={"#"}>Terms</Link>
+  Box,
+  Container,
+  Link,
+  SimpleGrid,
+  Stack,
+  Text,
+  Flex,
+  Tag,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import  React from 'react';
+
+
+
+const ListHeader = ({ children }) => {
+  return (
+    <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
+      {children}
+    </Text>
+  );
+};
+
+export default function Footer() {
+  return (
+    <Box
+      bg={useColorModeValue('gray.50', 'gray.900')}
+      color={useColorModeValue('gray.700', 'gray.200')}>
+      <Container as={Stack} maxW={'6xl'} py={10}>
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
+          <Stack align={'flex-start'}>
+            <ListHeader>Product</ListHeader>
+            <Link href={'#'}>Overview</Link>
+            <Stack direction={'row'} align={'center'} spacing={2}>
+              <Link href={'#'}>Features</Link>
+              <Tag
+                size={'sm'}
+                bg={useColorModeValue('green.300', 'green.800')}
+                ml={2}
+                color={'white'}>
+                New
+              </Tag>
             </Stack>
-  
-            <Stack align={"flex-start"}>
-              <ListHeader>The Company</ListHeader>
-              <Link href={"#"}>About Us</Link>
-              <Link href={"#"}>Crono Blog</Link>
-              <Link href={"#"}>Crono Forums</Link>
-              <Link href={"#"}>jobs</Link>
-              <Link href={"#"}>Support</Link>
-            </Stack>
-  
-            <Stack align={"flex-start"}>
-              <ListHeader>Partners & Affiliates</ListHeader>
-              <Link href={"#"}>Affiliate Program</Link>
-              <Link href={"#"}>Media Kit</Link>
-            </Stack>
-  
-            <Stack align={"flex-start"}>
-              <ListHeader>Install App</ListHeader>
-              <Image
-                m={"auto"}
-                mt="20px"
-                w="150px"
-                src="https://cdn1.cronometer.com/webflow/android-icon.svg"
-              ></Image>
-              <Image
-                m={"auto"}
-                mt="20px"
-                w="150px"
-                src="https://cdn1.cronometer.com/webflow/ios-icon.svg"
-              ></Image>
-            </Stack>
-          </SimpleGrid>
-        </Container>
-        <hr style={{ width: "70%", margin: "auto" }} />
-        <Box
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
-        >
-          <Container
-            as={Stack}
-            maxW={"6xl"}
-            py={4}
-            direction={{ base: "column", md: "row" }}
-            spacing={4}
-            justify={{ md: "space-between" }}
-            align={{ md: "center" }}
-          >
-            <Text>© 2023 Healthy Way. All rights reserved</Text>
-            <Stack direction={"row"} spacing={6}>
-              <SocialButton label={"Twitter"} href={"#"}>
-                <FaTwitter />
-              </SocialButton>
-              <SocialButton label={"YouTube"} href={"#"}>
-                <FaYoutube />
-              </SocialButton>
-              <SocialButton label={"Instagram"} href={"#"}>
-                <FaInstagram />
-              </SocialButton>
-            </Stack>
-          </Container>
-        </Box>
+            <Link href={'#'}>Tutorials</Link>
+            <Link href={'#'}>Pricing</Link>
+            <Link href={'#'}>Releases</Link>
+          </Stack>
+          <Stack align={'flex-start'}>
+            <ListHeader>Company</ListHeader>
+            <Link href={'#'}>About Us</Link>
+            <Link href={'#'}>Press</Link>
+            <Link href={'#'}>Careers</Link>
+            <Link href={'#'}>Contact Us</Link>
+            <Link href={'#'}>Partners</Link>
+          </Stack>
+          <Stack align={'flex-start'}>
+            <ListHeader>Legal</ListHeader>
+            <Link href={'#'}>Cookies Policy</Link>
+            <Link href={'#'}>Privacy Policy</Link>
+            <Link href={'#'}>Terms of Service</Link>
+            <Link href={'#'}>Law Enforcement</Link>
+            <Link href={'#'}>Status</Link>
+          </Stack>
+          <Stack align={'flex-start'}>
+            <ListHeader>Follow Us</ListHeader>
+            <Link href={'#'}>Facebook</Link>
+            <Link href={'#'}>Twitter</Link>
+            <Link href={'#'}>Dribbble</Link>
+            <Link href={'#'}>Instagram</Link>
+            <Link href={'#'}>LinkedIn</Link>
+          </Stack>
+        </SimpleGrid>
+      </Container>
+      <Box py={10}>
+        <Flex
+          align={'center'}
+          _before={{
+            content: '""',
+            borderBottom: '1px solid',
+            borderColor: useColorModeValue('gray.200', 'gray.700'),
+            flexGrow: 1,
+            mr: 8,
+          }}
+          _after={{
+            content: '""',
+            borderBottom: '1px solid',
+            borderColor: useColorModeValue('gray.200', 'gray.700'),
+            flexGrow: 1,
+            ml: 8,
+          }}>
+    
+        </Flex>
+        <Text pt={6} fontSize={'sm'} textAlign={'center'}>
+          © 2023 JS Academy. All rights reserved
+        </Text>
       </Box>
-    );
-  }
+    </Box>
+  );
+}
