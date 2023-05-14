@@ -6,7 +6,7 @@ import HompageCom from "../component/HomepageCom.jsx";
 export const Homepage = () => {
   return <>
     <Navbar />
-   <HompageCom/>
+    <HompageCom/>
   </> 
   
 
