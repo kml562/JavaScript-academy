@@ -59,7 +59,7 @@ export default function Dashboard() {
               Our Story
             </Text>
             <Heading>
-              Master JavaScript with our Structured Notes at JavaScript Academy"
+              Master JavaScript with our Structured Notes at JavaScript Academy
             </Heading>
             <Text color={"gray.500"} fontSize={"lg"}>
               Our website offers a structured approach to learning and provides
