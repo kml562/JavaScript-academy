@@ -62,7 +62,7 @@ export default function Navbar() {
           />
           <HStack spacing={8} alignItems={"center"}>
             <LinkRouter to="/"> 
-              <Image h="5%" w="5%" src={logo}  />
+              <Image h="50px" w="50px" src={logo} borderRadius={40}  />
             </LinkRouter>
 
             <HStack
