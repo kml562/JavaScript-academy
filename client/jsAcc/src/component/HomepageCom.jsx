@@ -30,7 +30,7 @@ export default function HompageCom() {
           <Heading
             lineHeight={1.1}
             fontWeight={600}
-            fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+            fontSize={{ base: "3xl", sm: "4xl", lg: "5xl", md : '4xl' }}
           >
             <Text
               as={"span"}
@@ -107,8 +107,8 @@ export default function HompageCom() {
             position={"relative"}
             overflow={"hidden"}
             className="home_image_box"
-            w={"400px"}
-            h={"300px"}
+            w={"100%"}
+            h={"100%"}
           >
             
             <Image

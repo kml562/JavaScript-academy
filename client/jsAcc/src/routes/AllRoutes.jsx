@@ -1,11 +1,13 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Homepage } from "../pages/Homepage";
 import Login from "../pages/Login";
 import Signup from "../pages/SignUp";
 
 const AllRoutes = () => {
-  
+
+
+
   return (
     <div>
       <Routes>
