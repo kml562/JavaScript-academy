@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React from "react";
 import {
   Box,
   Flex,
@@ -21,24 +21,7 @@ import {
 import { Link as LinkRouter } from "react-router-dom";
 import logo from "../png/logo.png";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
-
-
-const Links = ["Dashboard", "Projects", "Team"];
-
-const NavLink = ({ children }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {children}
-  </Link>
-);
+import { Link as LinkRoute, useLocation, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -61,7 +44,7 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <LinkRouter to="/"> 
+            <LinkRouter to="/welcome"> 
               <Image h="50px" w="50px" src={logo} borderRadius={40}  />
             </LinkRouter>
 
@@ -70,9 +53,45 @@ export default function Navbar() {
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+              <LinkRoute
+              px={2}
+              py={1}
+              rounded={"md"}
+              _hover={{
+                textDecoration: "none",
+                bg: useColorModeValue("gray.200", "gray.700"),
+              }}
+              href={"/dashboard"}
+              to="/dashboard"
+            >
+    {"Dashboard"}
+              </LinkRoute>
+              <LinkRoute
+    px={2}
+    to="/project"
+    py={1}
+    rounded={"md"}
+    _hover={{
+      textDecoration: "none",
+      bg: useColorModeValue("gray.200", "gray.700"),
+    }}
+    href={"#"}
+  >
+    {"Project"}
+              </LinkRoute>
+            <LinkRoute
+              px={2}
+              py={1}
+              to="/team"
+              rounded={"md"}
+              _hover={{
+                textDecoration: "none",
+                bg: useColorModeValue("gray.200", "gray.700"),
+              }}
+              href={"#"}
+            >
+              {"Team"}
+          </LinkRoute>
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
@@ -108,9 +127,45 @@ export default function Navbar() {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+              
+
+<Link
+px={2}
+py={1}
+rounded={"md"}
+_hover={{
+  textDecoration: "none",
+  bg: useColorModeValue("gray.200", "gray.700"),
+}}
+href={"/dashboard"}
+>
+{"Dashboard"}
+          </Link>
+          <Link
+px={2}
+py={1}
+rounded={"md"}
+_hover={{
+  textDecoration: "none",
+  bg: useColorModeValue("gray.200", "gray.700"),
+}}
+href={"#"}
+>
+{"Project"}
+          </Link>
+          <Link
+px={2}
+py={1}
+rounded={"md"}
+_hover={{
+  textDecoration: "none",
+  bg: useColorModeValue("gray.200", "gray.700"),
+}}
+href={"#"}
+>
+{"Team"}
+</Link>
+              
             </Stack>
           </Box>
         ) : null}
