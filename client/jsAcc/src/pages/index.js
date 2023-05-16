@@ -5,6 +5,6 @@ import Project from './Project.jsx'
 
 export {
     Home,
-    Project,
+    //Project,
     Team
 }

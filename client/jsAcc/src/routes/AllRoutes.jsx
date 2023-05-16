@@ -3,8 +3,9 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Homepage } from "../pages/Homepage";
 import Login from "../pages/Login";
 import Signup from "../pages/SignUp";
-import { Home,Project,Team } from '../pages/index.js'
+import { Home,Team } from '../pages/index.js'
 import Dashboard from "../pages/Dashbord";
+import Project from "../pages/Project";
 
 const AllRoutes = () => {
 
