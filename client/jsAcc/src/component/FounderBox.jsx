@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-export default function FounderBox({ ImgLink, Name, designation, Role }) {
+export default function FounderBox({ ImgLink, Name, designation, Role,linkedin,portfolio }) {
   return (
     <Center py={6}>
       <Box
@@ -60,6 +60,20 @@ export default function FounderBox({ ImgLink, Name, designation, Role }) {
           <Button
             w={"full"}
             mt={8}
+            bg={useColorModeValue("#0069fd", "blue.900")}
+            color={"white"}
+            rounded={"md"}
+            _hover={{
+              transform: "translateY(-2px)",
+              boxShadow: "lg",
+            }}
+          >
+           <a target="_blank" rel="noopener noreferrer" href={linkedin}>LINKEDIN</a>
+          </Button>
+
+          <Button
+            w={"full"}
+            mt={3}
             bg={useColorModeValue("#151f21", "gray.900")}
             color={"white"}
             rounded={"md"}
@@ -68,7 +82,7 @@ export default function FounderBox({ ImgLink, Name, designation, Role }) {
               boxShadow: "lg",
             }}
           >
-            Follow
+           <a target="_blank" rel="noopener noreferrer" href={portfolio}>PORTFOLIO</a>
           </Button>
         </Box>
       </Box>

@@ -25,20 +25,18 @@ export const createPost = BigPromise(async (req, res, next) => {
         content,
         author,
         tags,
+        rating
     } = req.body;
+
+    console.log(author)
 
 
     if (!title || !description || !content || !author ) return next(new CustomError("Please fill up all required fields", 400))
 
 
-    const event = await Event.create({
-        title,
-        description,
-        content,
-        tags
-    })
+    const post = await Post.create(req.body)
 
-    const populatedEvent = await event.populate('author')
+    const populatedEvent = await post.populate('author')
 
 
 

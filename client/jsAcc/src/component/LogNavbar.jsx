@@ -25,8 +25,13 @@ import {
 import logo from "../png/logo.png";
 import { Link as LinkRouter } from "react-router-dom";
 
+
+
 export default function LogNavbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const user = JSON.parse(localStorage.getItem('user')); 
+
+  console.log(user)
 
   return (
     <Box>
@@ -87,12 +92,13 @@ export default function LogNavbar() {
             fontWeight={600}
             color={"white"}
             bg={"pink.400"}
-            href={"#"}
             _hover={{
               bg: "pink.300",
             }}
           >
-           UserName
+           <LinkRouter to="/udboard">
+            {user?.name}
+           </LinkRouter>
           </Button>
         </Stack>
       </Flex>

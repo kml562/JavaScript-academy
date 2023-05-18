@@ -3,9 +3,9 @@ import LogNavbar from '../component/LogNavbar'
 import Footer from '../component/Footer'
 const Home = () => {
   return (<>
-  < LogNavbar />
-   
-    < Footer />
+    <LogNavbar />
+      Hello
+    <Footer />
   </>
    
   )

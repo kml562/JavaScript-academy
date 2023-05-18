@@ -2,7 +2,6 @@
 import CustomError from '../utils/customError.js'
 import User from '../model/user.js'
 import BigPromise from './bigPromise.js'
-import CustomError from '../utils/customError.js'
 import jwt from 'jsonwebtoken'
 
 

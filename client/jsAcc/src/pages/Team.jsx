@@ -3,21 +3,8 @@ import Navbar from "../component/Navbar";
 import Footer from "../component/Footer";
 import FounderBox from "../component/FounderBox";
 import { Flex, Box, Center, Grid, SimpleGrid } from "@chakra-ui/react";
+import { Details } from '../constant/index.js'
 
-let Details = [
-  {
-    Name: "Priyansh Sharma",
-    designation: "Co Founder",
-    ImgLink: "https://avatars.githubusercontent.com/u/96904296?v=4",
-    Role: "Admin"
-  },
-  {
-    Name: "Kamal Bisht",
-    designation: "Co Founder",
-    ImgLink: "https://avatars.githubusercontent.com/u/111355794?v=4",
-    Role: "Admin"
-  },
-];
 const Team = () => {
   return (
     <>
