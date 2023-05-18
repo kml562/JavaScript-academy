@@ -1,5 +1,6 @@
 import express from "express";
 import userRouter from "./routes/user.js";
+import postRouter from "./routes/post.js";
 
 import cors from 'cors'
 import morgan from 'morgan'
@@ -27,6 +28,7 @@ app.use(fileUpload({
 
 // Routing Middlewares
 app.use("/api/user", userRouter);
+app.use("/api/post", postRouter);
 
 
 export default app;

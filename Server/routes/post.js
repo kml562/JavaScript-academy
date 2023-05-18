@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllPosts, createPost, updatePost,getSinglePost,createComment } from "../controllers/post.js";
+import { getAllPosts, createPost, updatePost,getSinglePost,createComment, deletePost } from "../controllers/post.js";
 import { isLoggedIn } from '../middleware/user.js'
 
 
