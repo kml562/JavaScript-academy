@@ -120,11 +120,11 @@ const Article = () => {
             /> */}
         </Box>
       </Box>
-      <Heading as="h2" marginTop="5">
+      {/* <Heading as="h2" marginTop="5">
         Latest articles
-      </Heading>
+      </Heading> */}
       <Divider marginTop="5" />
-      <Wrap spacing="30px" marginTop="5">
+      {/* <Wrap spacing="30px" marginTop="5">
         <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
           <Box w="100%">
             <Box borderRadius="lg" overflow="hidden">
@@ -159,10 +159,10 @@ const Article = () => {
             />
           </Box>
         </WrapItem>
-      </Wrap>
+      </Wrap> */}
       <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
         <Heading as="h2">What we write about</Heading>
-        <Text as="p" fontSize="lg">
+        <Text as="p" fontSize="lg" className="home_dash_about">
         At the JavaScript Academy, we strive to provide high-quality and comprehensive notes on all aspects of JavaScript programming. Our notes cover a wide range of topics, from the basics of syntax and data types to more advanced concepts like functional programming and asynchronous programming.
         </Text>
         <Text as="p" fontSize="lg">

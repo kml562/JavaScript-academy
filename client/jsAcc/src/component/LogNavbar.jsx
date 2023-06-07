@@ -31,7 +31,6 @@ export default function LogNavbar() {
   const { isOpen, onToggle } = useDisclosure();
   const user = JSON.parse(localStorage.getItem('user')); 
 
-  console.log(user)
 
   return (
     <Box>
@@ -62,14 +61,7 @@ export default function LogNavbar() {
         </Flex>
               <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
              
-          {/* <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          >
-         JS Academy
-          </Text> */}
-                    <LinkRouter to="/"> 
+            <LinkRouter to="/"> 
               <Image  textAlign={useBreakpointValue({ base: "center", md: "left" })}  h="50px" src={logo} borderRadius={40}  />
             </LinkRouter>
 
@@ -96,10 +88,30 @@ export default function LogNavbar() {
               bg: "pink.300",
             }}
           >
-           <LinkRouter to="/udboard">
+           <LinkRouter to="/udboard" className=" ">
             {user?.name}
            </LinkRouter>
+
+            
           </Button>
+
+          <Button
+            as={"a"}
+            display={{ base: "none", md: "inline-flex" }}
+            fontSize={"sm"}
+            fontWeight={600}
+            color={"white"}
+            bg={"pink.400"}
+            _hover={{
+              bg: "pink.300",
+            }}
+          >
+            <LinkRouter to="/create" className="">
+              CREATE
+            </LinkRouter>
+          </Button>
+
+         
         </Stack>
       </Flex>
 
@@ -120,22 +132,11 @@ const DesktopNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}  >
           <Popover trigger={"hover"} placement={"bottom-start"}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? "#"}
-                    fontSize={"sm"}
-               
-                fontWeight={700}
-                color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
+              <LinkRouter
+                to={`${navItem.to}`}
               >
                 {navItem.label}
-              </Link>
-            </PopoverTrigger>
+              </LinkRouter>
 
             {navItem.children && (
               <PopoverContent
@@ -160,27 +161,26 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+const DesktopSubNav = ({ label, subLabel,to }) => {
   return (
-    <Link
-      href={href}
-      role={"group"}
-      display={"block"}
-      p={2}
-      rounded={"md"}
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+    <LinkRouter
+      to={`${to}`}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>
-          <Text
-            transition={"all .3s ease"}
-            _groupHover={{ color: "pink.400" }}
-            fontWeight={500}
-          >
-            {label}
-          </Text>
+            <div>
+              <Text
+                transition={"all .3s ease"}
+                _groupHover={{ color: "pink.400" }}
+                fontWeight={500}
+              >
+                  {label}
+              </Text>
+            </div>
           <Text fontSize={"sm"}>{subLabel}</Text>
         </Box>
+
+
         <Flex
           transition={"all .3s ease"}
           transform={"translateX(-10px)"}
@@ -193,7 +193,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
-    </Link>
+    </LinkRouter>
   );
 };
 
@@ -207,11 +207,15 @@ const MobileNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+
+      {MOBILE_MORE.map((item)=>(
+        <MobileNavItem key={item.label} {...item} />
+      ))}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, children, href }) => {
+const MobileNavItem = ({ label, children, to }) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -219,19 +223,21 @@ const MobileNavItem = ({ label, children, href }) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? "#"}
         justify={"space-between"}
         align={"center"}
         _hover={{
           textDecoration: "none",
         }}
       >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
-        >
-          {label}
-        </Text>
+
+        <LinkRouter to={`${to}`} className="">
+            <Text
+              fontWeight={600}
+              color={useColorModeValue("gray.600", "gray.200")}
+            >
+            {label}
+          </Text>
+        </LinkRouter>
         {children && (
           <Icon
             as={ChevronDownIcon}
@@ -242,24 +248,6 @@ const MobileNavItem = ({ label, children, href }) => {
           />
         )}
       </Flex>
-
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
-        <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
-        >
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Link>
-            ))}
-        </Stack>
-      </Collapse>
     </Stack>
   );
 };
@@ -267,45 +255,32 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
     {
     label: "JavaScript",
-    children: [
-      {
-        label: "Variables and Data Types",
-        subLabel: "includes the basics, variables and data types, basic operators ",
-        href: "#",
-      },
-      {
-        label: "Control Structures and Functions",
-        subLabel: "control structures available in JavaScript such as if/else statements, loops, and switch statements.Functions with different arguments.",
-        href: "#",
-      },
-    ],
+    to : "/tech/javascript"
   },
   {
     label: "React",
-    children: [
-      {
-        label: "The Virtual DOM",
-        subLabel: "React uses a virtual DOM to manage updates to the UI. The virtual DOM is a lightweight representation of the actual DOM",
-        href: "#",
-      },
-      {
-        label: "Component API",
-        subLabel: "The core of React. It provides developers with a way to define the structure and behavior of UI elements. ",
-        href: "#",
-        },
-        {
-            label: "Redux",
-            subLabel: ": Redux is a state management library that is often used in conjunction with React. ",
-            href: "#",
-          },
-    ],
+    to: "/tech/react"
   },
   {
     label: "Node js",
-    href: "#",
+    to: "/tech/nodejs",
   },
   {
     label: "Mongo DB",
-    href: "#",
+    to: "/tech/mongodb",
   },
+
+  
 ];
+
+
+const MOBILE_MORE =[
+  {
+    label : "Dashboard",
+    to : "/tech/udboard"
+  },
+  {
+    label : "Create",
+    to : "/tech/create"
+  }
+]

@@ -54,6 +54,8 @@ export default function Login() {
 
 
       } catch (error) {
+      alert("Please Enter Corrrect Email or password")
+      setLoading(false)
       console.log(error)
     }
 

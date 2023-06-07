@@ -1,0 +1,8 @@
+export { default as NotesCard } from './NotesCard.jsx'
+export { default as Article } from './Article.jsx'
+export { default as Feedback } from './Feedback.jsx'
+export { default as Footer } from './Footer.jsx'
+export { default as HomepageCom } from './HomepageCom.jsx'
+export { default as Navbar } from './Navbar.jsx'
+export { default as Sidebar } from './Sidebar.jsx'
+export { default as FounderBox } from './FounderBox.jsx'

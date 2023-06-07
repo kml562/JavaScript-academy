@@ -1,9 +1,382 @@
-*{
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
 
-.demo{
+.demo {
   color: #0069fd;
+}
+
+.userDashboard_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgb(237, 255, 0);
+  background: linear-gradient(
+    40deg,
+    rgba(237, 255, 0, 0.9837184873949579) 11%,
+    rgba(77, 238, 179, 1) 41%,
+    rgba(79, 236, 178, 1) 57%,
+    rgba(103, 212, 162, 1) 69%,
+    rgba(0, 134, 255, 1) 88%
+  );
+}
+
+.img_user {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+}
+
+.imge_user {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.userDashboard_container {
+  min-height: 80vh;
+}
+
+.name_user {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  color: #161616b7;
+  font-weight: 700;
+}
+
+.logout_btn {
+  color: white;
+}
+
+.email_user {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  color: rgba(48, 48, 48, 0.756);
+  font-weight: 700;
+}
+
+.logout {
+  margin-top: 1rem;
+  cursor: pointer;
+  background: rgba(255, 0, 0, 0.664);
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.1s linear;
+}
+
+.logout:active {
+  transform: scale(0.91);
+}
+
+.usercard {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.9px);
+  -webkit-backdrop-filter: blur(7.9px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: max-content;
+}
+
+.home_main {
+  min-height: 100vh;
+
+  background: rgb(237, 255, 0);
+  background: linear-gradient(
+    40deg,
+    rgba(237, 255, 0, 0.9837184873949579) 11%,
+    rgba(216, 238, 77, 1) 48%,
+    rgba(139, 245, 62, 1) 61%,
+    rgba(103, 212, 198, 1) 72%,
+    rgba(0, 134, 255, 1) 100%
+  );
+}
+
+.post_card {
+  width: max-content;
+  height: max-content;
+  padding: 2rem;
+
+  margin: 1rem;
+
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+}
+
+.notecard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.notes_title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+
+.notes_description {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.801);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  /* background: black; */
+}
+
+.tag {
+  color: white;
+  border-radius: 2rem;
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+
+background: rgba(0, 0, 0, 0.3);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(9.5px);
+-webkit-backdrop-filter: blur(9.5px);
+}
+
+
+
+.notedetails{
+  min-height: 100vh;
+  background: rgb(254,255,110);
+  background: radial-gradient(circle, rgba(254,255,110,0.9837184873949579) 9%, rgba(238,202,90,1) 50%, rgba(251,195,121,1) 62%, rgba(255,199,147,1) 81%);
+}
+
+
+
+.notedetails{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.title_of_details{
+  font-size: 2.6rem;
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  letter-spacing: 2px;
+}
+
+
+.user_img_details{
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+}
+
+.authorDetails{
+  display: flex;
+  margin-top: 2rem;
+}
+
+.more_details{
+  display: flex;
+  /* align-items: space-between; */
+}
+
+.time{
+  margin-left: 0.6rem;
+}
+
+.author_details_name{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 0.3rem;
+}
+
+.author_nme_det{
+  font-size: 1rem;
+  font-weight: 500;
+
+}
+
+.time_read{
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.772);
+}
+
+.time{
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.772);
+}
+
+
+
+.description_of_note_details{
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.content{
+  font-size: 1rem;
+  margin-top: 2rem;
+  text-align: justify;
+  max-width: 700px;
+}
+
+
+.tags{
+  margin-top: 2rem;
+}
+
+
+.home_dash_about{
+  margin-top: 2rem;
+}
+
+/* .nav_btns{
+  margin: 0.3rem;
+} */
+
+.btn_nav_left{
+  margin-left: 1rem;
+}
+
+
+
+.create_notes{
+  min-height: 100vh;
+  background: rgb(34,193,195);
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+
+.create_form_box{
+  margin-top: 3rem;
+}
+
+.content_create_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.createTitle{
+  font-size: 3rem;
+  font-weight: 700;
+  color: rgb(67, 144, 239);
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-top: 3rem;
+}
+
+
+
+.form_create{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+
+.form_create_inp{
+  margin-top: 1rem;
+  width: 800px;
+  border-radius: 1rem;
+  background-color: transparent;
+  border: 1px solid black;
+  padding: 1rem;
+
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  color: rgb(0, 0, 0);
+
+  letter-spacing: 1px;
+}
+
+.form_submit{
+  margin-top: 1rem;
+  max-width: 800px;
+  background: yellow;
+  color: black;
+  font-size: 1rem;
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.form_submit{
+  margin-top: 1rem;
+  max-width: 800px;
+  background: yellow;
+  color: black;
+  font-size: 1rem;
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  transition: all 0.1s linear;
+}
+
+.form_submit:active{
+  transform: scale(0.91);
+}
+
+
+@media (max-width: 827px) {
+  .form_create_inp{
+    margin-top: 1rem;
+    width: 400px;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 1rem;
+  }
+  
+
+  .create_form_box{
+    margin-top: 2rem;
+  }
+
+  .createTitle{
+    font-size: 2rem;
+  }
+
+  .createTitle{
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .form_create_inp{
+    margin-top: 1rem;
+    width: 260px;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 1rem;
+  }
 }
