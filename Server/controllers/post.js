@@ -9,7 +9,7 @@ dotenv.config()
 
 
 export const getAllPosts = BigPromise(async (req, res, next) => {
-    const posts = await Post.find()
+    const posts = await Post.find().populate('author')
 
     res.status(200).json({
         success: true,
@@ -52,7 +52,7 @@ export const getSinglePost = BigPromise(async (req, res, next) => {
         id
     } = req.params;
 
-    const post = await Post.findById(id);
+    const post = await Post.findById(id).populate("author");
 
     if (!post) return next(new CustomError("No Event Found", 404))
 

@@ -60,6 +60,8 @@ export default function Signup() {
       }
       setLoading(false)
     } catch (error) {
+      alert("Please Enter Corrrect Email or password")
+      setLoading(false)
       console.error('Error:', error);
     }
   };
