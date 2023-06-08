@@ -6,6 +6,7 @@ import NoteDetails from './NoteDetails.jsx'
 import CreateNotes from './CreateNotes.jsx'
 import Tech from './Tech.jsx'
 import EditNote from './EditNote.jsx'
+import Search from './Search.jsx'
 
 
 
@@ -17,5 +18,6 @@ export {
     NoteDetails,
     CreateNotes,
     Tech,
-    EditNote
+    EditNote,
+    Search
 }

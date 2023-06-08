@@ -57,7 +57,6 @@ const EditNote = () => {
             }
           };
         const res = await axios.put(`http://localhost:8080/api/post/post/${id}`, updatedForm,options)
-        console.log(res)
         navigate('/')
     } catch (error) {
         alert(error.message)

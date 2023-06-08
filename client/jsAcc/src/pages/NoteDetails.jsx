@@ -25,7 +25,6 @@ const NoteDetails = () => {
 
         const updateRating = async()=>{
 
-            console.log(selectedRate)
             try {
                 const filterObject = {
                     title: noteDetail.title,
@@ -43,7 +42,6 @@ const NoteDetails = () => {
                   };
                   const res = await axios.put(`http://localhost:8080/api/post/post/${id}`, filterObject,options)
 
-                  console.log(res)
 
                   if(res.status===200){
                     navigate('/')
@@ -85,7 +83,6 @@ const NoteDetails = () => {
     };
 
 
-    // console.log(noteDetail)
 
 
   return (

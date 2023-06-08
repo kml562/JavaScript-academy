@@ -11,7 +11,7 @@ export const Homepage = () => {
     <Navbar />
     <HompageCom />
     <Article />
-    < Footer />
+    <Footer />
   </> 
   
 

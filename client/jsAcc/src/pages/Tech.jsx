@@ -33,7 +33,6 @@ const Tech = () => {
 
       fetchData()
     },[id])
-    console.log(notes)
 
 
   return (

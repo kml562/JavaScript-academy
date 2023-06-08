@@ -1,16 +1,22 @@
 import Footer from '../component/Footer'
 import LogNavbar from '../component/LogNavbar'
 import { ava1, ava2, ava3, ava4 } from '../assets/index.js'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineLogout } from 'react-icons/ai'
 import axios from 'axios'
 import { Link as LinkRoute, useLocation, useNavigate } from 'react-router-dom'
+import { Spin } from 'antd';
+import { NotesCard } from '../component';
+
+
 
 const UserDashboard = () => {
+  const [loading, setLoading] = useState(false)
+  const [notes, setNotes] = useState([])
   const navigate = useNavigate()
   const user = JSON.parse(localStorage.getItem('user')); 
   const avatar = [ ava1, ava2, ava3, ava4 ]
-
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     // Randomly pick an avatar
@@ -21,6 +27,25 @@ const UserDashboard = () => {
 
     // Update the user object in localStorage
     localStorage.setItem('user', JSON.stringify(user));
+
+    const userNotes = async()=>{
+      setLoading(true)
+      try {
+        const options = {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+        };
+          const res = await axios.get(`http://localhost:8080/api/post/notes/${user._id}`,options)
+
+          setNotes(res.data.posts)
+          setLoading(false)
+      } catch (error) {
+        alert(error.message)
+        console.log(error.message)
+      }
+    }
+    userNotes()
   }, []);
 
   const handleLogout = async()=>{
@@ -30,6 +55,7 @@ const UserDashboard = () => {
     navigate('/welcome')
     return res;
   }
+
 
   return (
     <>
@@ -44,6 +70,22 @@ const UserDashboard = () => {
                 </div>
                 <div className="name_user">{user.name}</div>
                 <div className="email_user">{user.email}</div>
+              </div>
+
+              <div className="user_dashboard_user_notes">
+                <div className="title_of_user">Your Notes</div>
+
+                {loading ? (
+                    <div className="spinner">
+                      <Spin />
+                    </div>
+                ):(
+                  <div className="notecard search_notes_main">
+                    {notes?.map((post)=>(
+                      <NotesCard key={post._id} post={post}/>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
         <Footer />

@@ -23,7 +23,6 @@ export const signUp = BigPromise(async (req, res, next) => {
     return next( new CustomError("Name Email & Password are required fields", 400) );}
 
     if (!isValidEmail(email)) {
-        console.log("hello")
         return next(new CustomError("Please enter a valid email", 400));
   }
   
@@ -124,6 +123,8 @@ export const logout = BigPromise(async (req, res, next) => {
 
   res.status(200).json({ success: true, message: "Logout Success" });
 });
+
+
 
 export const getAllUsers = BigPromise(async (req, res, next) => {
   const allUsers = await User.find();

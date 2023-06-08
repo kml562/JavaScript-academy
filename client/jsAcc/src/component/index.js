@@ -6,3 +6,5 @@ export { default as HomepageCom } from './HomepageCom.jsx'
 export { default as Navbar } from './Navbar.jsx'
 export { default as Sidebar } from './Sidebar.jsx'
 export { default as FounderBox } from './FounderBox.jsx'
+export { default as ProjectCard } from './ProjectCard.jsx'
+
