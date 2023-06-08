@@ -10,111 +10,81 @@ import {
 } from "../utils/validation/validatior.js";
 dotenv.config();
 
+export const signUp = async (req, res, next) => {
+  try {
+    const { name, email, password } = req.body;
 
+    if (!email || !name || !password) {
+      return res
+        .status(400)
+        .json({ message: "Invalid name, email, or password" });
+    }
 
+    // All the validation using regex-----------------------------------------------------------------
+    // Name validation--------------------------------------------------------------------------------
+    console.log(name)
+    if (!isValidName(name)) {
+      console.log("first")
+      return res.status(400).json({ message: "Invalid name" });
+    }
 
-
-
-export const signUp = BigPromise(async (req, res, next) => {
-  const { name, email, password } = req.body;
-
-
-  if (!email || !name || !password) {
-    return next( new CustomError("Name Email & Password are required fields", 400) );}
-
+    // Email validation---------------------------------------------------------------------------------
     if (!isValidEmail(email)) {
-        console.log("hello")
-        return next(new CustomError("Please enter a valid email", 400));
+      return res.status(400).json({ message: "Invalid email" });
+    }
+
+    // Password validation------------------------------------------------------------------------------
+    if (!isValidPassword(password)) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+
+    const user = await User.create({ name, email, password });
+    cookieToken(res, user);
+    next();
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
   }
-  
-  // if (!isValidPassword(password))return next(new CustomError("Please enter a valid password", 400));
-    
-  
-  const user = await User.create({ name, email , password });
+};
 
-
-
-  cookieToken(res, user);
-});
-
-
-
-
-// export const signUp = BigPromise(async (req, res, next) => {
-//     try { const { name, email, password } = req.body;
-  
-//     if (!email || !name || !password) {return res.status(400).json({ message: 'Invalid name email or password' })
-// }
-//    // all the validation using regex-----------------------------------------------------------------
-//     //name validation--------------------------------------------------------------------------------
-//     if (!isValidName(name)) {
-//         return res.status(400).json({ message: 'Invalid name' });
-//       }       
-//      //email validation---------------------------------------------------------------------------------
-//         if (!isValidEmail(email))
-//             return res.status(400).json({ message: 'Invalid email' });
-//    // password validation------------------------------------------------------------------------------
-//    if (!isValidPassword(password))
-//      return res.status(400).json({ message: 'Invalid password' });
-//   const user = await User.create({ name, email, password });
-//   cookieToken(res, user);  
-//     } catch (error) {
-//         return res.status(500).json({ message: error.message });
-//     }});
-  
-
-// export const login = BigPromise(async (req, res, next) => {
-//   const { email, password } = req.body;
-
-//   if (!email || !password)
-//     return next(new CustomError("Please Provide Email & Password", 400));
-
-//   const user = await User.findOne({ email }).select("+password");
-
-//   if (!user) return next(new CustomError("You are not registered", 400));
-
-//   const isUserValidated = user.isValidatedPassword(password);
-
-//   if (!isUserValidated) {
-//     return next(new CustomError("Invailed Password", 400));
-//   }
-//   //email validation------------------------------------------------------------------------------------
-//   if (!isValidEmail) {
-//     return next(new CustomError("Please enter a valid email", 400));
-//   }
-//   // password validation------------------------------------------------------------------------------
-//   if (!isValidPassword(password)) {
-//     return next(new CustomError("Please enter a valid password", 400));
-//   }
-
-//   cookieToken(res, user);
-// });
-
-export const login = BigPromise(async (req, res, next) => {
+export const login = async (req, res, next) => {
+  try {
     const { email, password } = req.body;
-    if (!email || !password)
-        return next(new CustomError("Please Provide Email & Password", 400));
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ message: "Please provide email and password" });
+    }
 
     const user = await User.findOne({ email }).select("+password");
- 
-    if (!user) return next(new CustomError("You are not registered", 400));
 
-    // const isUserValidated = user.isValidatedPassword(password);
-
-    // if (!isUserValidated) {
-    //     return next(new CustomError("Invailed Password", 400));
-    // }
-    //email validation------------------------------------------------------------------------------------
-    if (!isValidEmail(email)) {
-        return next(new CustomError("Please enter a valid email", 400));
+    if (!user) {
+      return res.status(400).json({ message: "You are not registered" });
     }
-    // password validation------------------------------------------------------------------------------
-    // if (!isValidPassword(password)) {
-    //     return next(new CustomError("Please enter a valid password", 400));
-    // }
 
+    const isUserValidated = user.isValidatedPassword(password);
+
+    if (!isUserValidated) {
+      return res.status(400).json({ message: "Invalid password" });
+    }
+
+    // Email validation------------------------------------------------------------------------------------
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ message: "Please enter a valid email" });
+    }
+
+    // Password validation------------------------------------------------------------------------------
+    if (!isValidPassword(password)) {
+      return res.status(400).json({ message: "Please enter a valid password" });
+    }
+    
     cookieToken(res, user);
-});
+    next();
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 
 export const logout = BigPromise(async (req, res, next) => {
   res.cookie("token", null, {
@@ -130,3 +100,8 @@ export const getAllUsers = BigPromise(async (req, res, next) => {
 
   res.status(200).json({ success: true, users: allUsers });
 });
+
+
+
+
+

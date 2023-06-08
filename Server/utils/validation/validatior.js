@@ -1,5 +1,5 @@
 export const isValidName = (name) => {
-    const nameRegex = /^[a-zA-Z]{4,20}$/; 
+    const nameRegex =/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/; 
     return nameRegex.test(name);
   };
   
