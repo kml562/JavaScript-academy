@@ -33,7 +33,6 @@ const CreateNotes = () => {
             }
           };
         const res = await axios.post('http://localhost:8080/api/post/post', updatedForm,options)
-        console.log(res.data)
         navigate('/')
     } catch (error) {
         alert(error.message)

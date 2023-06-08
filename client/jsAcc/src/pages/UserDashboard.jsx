@@ -25,7 +25,6 @@ const UserDashboard = () => {
 
   const handleLogout = async()=>{
     const res = await axios.get("http://localhost:8080/api/user/logout");
-    console.log(res)
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     navigate('/welcome')

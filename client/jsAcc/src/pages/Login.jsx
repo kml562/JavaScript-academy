@@ -42,7 +42,6 @@ export default function Login() {
           `${VITE_URL}/user/login`,
           { email, password }
         );
-        console.log(res.data); 
 
         
       if(res.data.token){

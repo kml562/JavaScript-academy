@@ -9,13 +9,11 @@ import jwt from 'jsonwebtoken'
 export const isLoggedIn = BigPromise(async(req,res,next)=>{
     const token = req.cookies.token || req.headers.authorization.split(" ")[1] || req.header("Authorization")?.replace("Bearer ", " ") 
     // const token = req.headers.authorization.split(" ")[1];
-    console.log(token)
 
     
     if(!token) return next(new CustomError("Login first to access this page", 401))
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    console.log(decoded)
 
 
     const thisIsThatUser = await User.findById(decoded.id)

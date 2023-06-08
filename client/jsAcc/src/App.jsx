@@ -17,14 +17,12 @@ function App() {
   useEffect(()=>{
     if(routeName==='/'){
       if(token){
-        console.log()
         navigate('/');
       }else{
         navigate('/welcome');
       }
     }else if(routeName === '/welcome'){
       if(token){
-        console.log()
         navigate('/');
       }else{
         navigate('/welcome');

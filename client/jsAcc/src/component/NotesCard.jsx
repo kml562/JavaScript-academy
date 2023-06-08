@@ -13,7 +13,7 @@ const NotesCard = ({post}) => {
         </div>
 
         <div className="notes_author">
-            Author - {post?.author?.name}
+            By - {post?.author?.name}
         </div>
 
         <div className="notes_rating">

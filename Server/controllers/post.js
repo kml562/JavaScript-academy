@@ -28,7 +28,6 @@ export const createPost = BigPromise(async (req, res, next) => {
         rating
     } = req.body;
 
-    console.log(author)
 
 
     if (!title || !description || !content || !author ) return next(new CustomError("Please fill up all required fields", 400))
