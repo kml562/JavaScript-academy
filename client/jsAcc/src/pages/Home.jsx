@@ -27,7 +27,6 @@ import { NotesCard } from '../component'
       getPosts()
     },[])
 
-    // console.log(posts)
 
 
     return (

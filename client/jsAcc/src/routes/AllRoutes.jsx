@@ -3,7 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Homepage } from "../pages/Homepage";
 import Login from "../pages/Login";
 import Signup from "../pages/SignUp";
-import { CreateNotes, Home,NoteDetails,Team, Tech, UserDashboard } from '../pages/index.js'
+import { CreateNotes, EditNote, Home,NoteDetails,Team, Tech, UserDashboard } from '../pages/index.js'
 import Dashboard from "../pages/Dashbord";
 import Project from "../pages/Project";
 
@@ -25,6 +25,7 @@ const AllRoutes = () => {
         <Route path="/note/:id" element={<NoteDetails />} />
         <Route path="/create" element={<CreateNotes />} />
         <Route path="/tech/:id" element={<Tech />} />
+        <Route path="/edit/:id" element={<EditNote />} />
         
       </Routes>
     </div>

@@ -1,7 +1,6 @@
 import {
   Box,
   Container,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -10,10 +9,12 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import  React from 'react';
+import { Link } from 'react-router-dom'
 
 
 
 const ListHeader = ({ children }) => {
+
   return (
     <Text fontWeight={'500'} fontSize={'lg'} mb={2}>
       {children}
@@ -22,52 +23,41 @@ const ListHeader = ({ children }) => {
 };
 
 export default function Footer() {
+  const token = localStorage.getItem('token'); // get token from local storage
+
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={10}>
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
-          <Stack align={'flex-start'}>
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={8}>
+          <Stack align={'center'}>
             <ListHeader>Product</ListHeader>
-            <Link href={'#'}>Overview</Link>
-            <Stack direction={'row'} align={'center'} spacing={2}>
-              <Link href={'#'}>Features</Link>
-              <Tag
-                size={'sm'}
-                bg={useColorModeValue('green.300', 'green.800')}
-                ml={2}
-                color={'white'}>
-                New
-              </Tag>
-            </Stack>
-            <Link href={'#'}>Tutorials</Link>
-            <Link href={'#'}>Pricing</Link>
-            <Link href={'#'}>Releases</Link>
+
+            <Link to={'/project'}>Overview</Link>
+           
+            <a href="https://www.youtube.com/channel/UC3PSbYmfM5S5eYICJth5CFA" target="_blank" rel="noopener noreferrer">Tutorials</a>
+
+
           </Stack>
-          <Stack align={'flex-start'}>
+          <Stack align={'center'}>
             <ListHeader>Company</ListHeader>
-            <Link href={'#'}>Admin Login</Link>
-            <Link href={'#'}>About Us</Link>
-            <Link href={'#'}>Careers</Link>
-            <Link href={'#'}>Contact Us</Link>
-            <Link href={'#'}>Partners</Link>
+
+            {!token && (
+              <Link to={'/signup'}>Admin Login</Link>
+            )}
+
+            <Link to={'/team'}>About Us</Link>
+            <a href="mailto:piyuindia4@gmail.com">Contact Us</a>
+            <Link to={'/team'}>Partners</Link>
           </Stack>
-          <Stack align={'flex-start'}>
-            <ListHeader>Legal</ListHeader>
-            <Link href={'#'}>Cookies Policy</Link>
-            <Link href={'#'}>Privacy Policy</Link>
-            <Link href={'#'}>Terms of Service</Link>
-            <Link href={'#'}>Law Enforcement</Link>
-            <Link href={'#'}>Status</Link>
-          </Stack>
-          <Stack align={'flex-start'}>
+          
+          <Stack align={'center'}>
             <ListHeader>Follow Us</ListHeader>
-            <Link href={'#'}>Facebook</Link>
-            <Link href={'#'}>Twitter</Link>
-            <Link href={'#'}>Dribbble</Link>
-            <Link href={'#'}>Instagram</Link>
-            <Link href={'#'}>LinkedIn</Link>
+            <a href="https://www.youtube.com/channel/UC3PSbYmfM5S5eYICJth5CFA" target="_blank" rel="noopener noreferrer">Youtube</a>
+            <a href="https://twitter.com/Priyansh_____" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://www.instagram.com/urdevdose/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.linkedin.com/in/kamal-bisht-552a17193/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </Stack>
         </SimpleGrid>
       </Container>

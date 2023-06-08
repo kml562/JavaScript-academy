@@ -26,7 +26,6 @@ const formData = {
 export default function Login() {
   const [form, setForm] = useState(formData);
   const [loading, setLoading] = useState(false)
-  const location = useLocation();
   const navigate = useNavigate();
 
   const {VITE_URL} = import.meta.env;
@@ -42,7 +41,6 @@ export default function Login() {
           `${VITE_URL}/user/login`,
           { email, password }
         );
-        console.log(res.data); 
 
         
       if(res.data.token){

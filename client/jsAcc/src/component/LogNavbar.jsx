@@ -128,9 +128,12 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
-    <Stack direction={"row"} spacing={4}  marginTop={"5px"} >
+    <Stack direction={"row"} spacing={6}  marginTop={""} >
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}  >
+        <Flex key={navItem.label} 
+         justify={"center"}
+          align={"center"}
+        >
           <Popover trigger={"hover"} placement={"bottom-start"}>
               <LinkRouter
                 to={`${navItem.to}`}
@@ -155,7 +158,7 @@ const DesktopNav = () => {
               </PopoverContent>
             )}
           </Popover>
-        </Box>
+        </Flex>
       ))}
     </Stack>
   );
@@ -262,11 +265,11 @@ const NAV_ITEMS = [
     to: "/tech/react"
   },
   {
-    label: "Node js",
+    label: "Nodejs",
     to: "/tech/nodejs",
   },
   {
-    label: "Mongo DB",
+    label: "MongoDB",
     to: "/tech/mongodb",
   },
 

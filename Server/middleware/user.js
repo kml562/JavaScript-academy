@@ -9,7 +9,6 @@ export const isLoggedIn = BigPromise(async (req, res, next) => {
     req.headers.authorization.split(" ")[1] ||
     req.header("Authorization")?.replace("Bearer ", " ");
   // const token = req.headers.authorization.split(" ")[1];---------------------
-  console.log(token);
 
   if (!token)
     return next(new CustomError("Login first to access this page", 401));
@@ -17,10 +16,11 @@ export const isLoggedIn = BigPromise(async (req, res, next) => {
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   console.log(decoded);
 
-  const thisIsThatUser = await User.findById(decoded.id);
 
-  // injucting new field(user) in req
-  req.user = thisIsThatUser;
+    const thisIsThatUser = await User.findById(decoded.id)
 
-  next();
-});
+    // injucting new field(user) in req
+    req.user = thisIsThatUser
+
+    next()
+})

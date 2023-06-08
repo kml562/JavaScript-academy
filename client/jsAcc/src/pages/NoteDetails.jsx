@@ -1,27 +1,67 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import LogNavbar from '../component/LogNavbar'
 import { Footer } from '../component'
 import moment from 'moment'
 import { ava1, ava2, ava3, ava4 } from '../assets/index.js'
+import { Rate } from 'antd';
+
 
 const NoteDetails = () => {
     const [noteDetail, setNoteDetail] = useState(null)
+    const [selectedRate, setSelectedRate] = useState(null);
     const [ravatar, setRAvatar] = useState(null)
     const token = localStorage.getItem('token')
+    const user = JSON.parse(localStorage.getItem('user')); 
     const {id} = useParams()
+    const navigate = useNavigate()
     const avatar = [ ava1, ava2, ava3, ava4 ]
     const readingSpeed = 200;
     const wordCount = noteDetail?.content.trim().split(/\s+/).length;
     const readingTimeMinutes = Math.ceil(wordCount / readingSpeed);
 
-    console.log(readingTimeMinutes)
+
+
+        const updateRating = async()=>{
+
+            console.log(selectedRate)
+            try {
+                const filterObject = {
+                    title: noteDetail.title,
+                    description: noteDetail.description,
+                    content: noteDetail.content,
+                    tags: noteDetail.tags,
+                    rating : selectedRate===null ? 5 : selectedRate
+                }
+
+
+                const options = {
+                    headers: {
+                      'Authorization': `Bearer ${token}`
+                    }
+                  };
+                  const res = await axios.put(`http://localhost:8080/api/post/post/${id}`, filterObject,options)
+
+                  console.log(res)
+
+                  if(res.status===200){
+                    navigate('/')
+                  }
+
+            } catch (error) {
+                alert(error.message)
+                console.log(error)
+            }
+        }
+
+
 
     useEffect(()=>{
         const randomAvatar = avatar[Math.floor(Math.random() * avatar.length)];
         setRAvatar(randomAvatar)
         const fetchNoteDetails = async()=>{
+
             try {
                 const options = {
                     headers: {
@@ -39,8 +79,13 @@ const NoteDetails = () => {
         fetchNoteDetails()
     },[])
 
-    // console.log(noteDetail)
+    const handleRateChange = (value) => {
+        setSelectedRate(value);
+        updateRating()
+    };
 
+
+    // console.log(noteDetail)
 
 
   return (
@@ -66,16 +111,23 @@ const NoteDetails = () => {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="description_of_note_details">
-                {noteDetail?.description}
+                {noteDetail?.author?._id === user._id && (
+                    <Link to={`/edit/${id}`} className="editBtn">
+                        Edit Notes
+                    </Link>
+                )}
             </div>
-
 
             <div className="content">
                 {noteDetail?.content}
             </div>
+
+            {noteDetail?.url && (
+                <div className="learn_more">
+                    <a className="learn_more_btn" target="blank" rel="noopener noreferrer" href={noteDetail?.url}>Read More</a>
+                </div>
+            )}
 
             <div className="tags">
             {noteDetail?.tags?.map((tag,index)=>(
@@ -83,6 +135,11 @@ const NoteDetails = () => {
                     {tag}
                 </div>
             ))}
+            </div>
+
+            <div className="rate">
+                <Rate value={noteDetail?.rating} className='rate_main' onChange={handleRateChange}/>
+                {/* <Rate className='rate_main' onChange={handleRateChange} character={({ index }) => index + 1} /> */}
             </div>
         </div>
       <Footer />

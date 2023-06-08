@@ -51,7 +51,6 @@ export default function Signup() {
     try {
       setLoading(true)
       const res = await axios.post( `${VITE_URL}/user/signup`, formData);
-      console.log(res.data);
 
       if(res.data.token){
         localStorage.setItem('token', res.data.token); // store token in local storage

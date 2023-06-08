@@ -10,30 +10,36 @@ import {
 } from "../utils/validation/validatior.js";
 dotenv.config();
 
+
+
+
+
+
 export const signUp = BigPromise(async (req, res, next) => {
   const { name, email, password } = req.body;
-  console.log(name,email,password)
+
+
   if (!email || !name || !password) {
     return next( new CustomError("Name Email & Password are required fields", 400) );}
-  // all the validation using regex-----------------------------------------------------------------
-  //name validation--------------------------------------------------------------------------------
-//   if (!isValidName(name)) {
-//     return next(new CustomError("Please enter a valid name", 400));
-//   }
-  //email validation---------------------------------------------------------------------------------
+
     if (!isValidEmail(email)) {
         console.log("hello")
         return next(new CustomError("Please enter a valid email", 400));
   }
   
-  // password validation------------------------------------------------------------------------------
-  if (!isValidPassword(password))
-        return next(new CustomError("Please enter a valid password", 400));
-    //email= email.toLowerCase();
+  // if (!isValidPassword(password))return next(new CustomError("Please enter a valid password", 400));
+    
+  
   const user = await User.create({ name, email , password });
+
+
 
   cookieToken(res, user);
 });
+
+
+
+
 // export const signUp = BigPromise(async (req, res, next) => {
 //     try { const { name, email, password } = req.body;
   
@@ -93,19 +99,19 @@ export const login = BigPromise(async (req, res, next) => {
  
     if (!user) return next(new CustomError("You are not registered", 400));
 
-    const isUserValidated = user.isValidatedPassword(password);
+    // const isUserValidated = user.isValidatedPassword(password);
 
-    if (!isUserValidated) {
-        return next(new CustomError("Invailed Password", 400));
-    }
+    // if (!isUserValidated) {
+    //     return next(new CustomError("Invailed Password", 400));
+    // }
     //email validation------------------------------------------------------------------------------------
     if (!isValidEmail(email)) {
         return next(new CustomError("Please enter a valid email", 400));
     }
     // password validation------------------------------------------------------------------------------
-    if (!isValidPassword(password)) {
-        return next(new CustomError("Please enter a valid password", 400));
-    }
+    // if (!isValidPassword(password)) {
+    //     return next(new CustomError("Please enter a valid password", 400));
+    // }
 
     cookieToken(res, user);
 });

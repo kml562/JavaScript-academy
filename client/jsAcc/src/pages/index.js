@@ -5,6 +5,7 @@ import UserDashboard from './UserDashboard'
 import NoteDetails from './NoteDetails.jsx'
 import CreateNotes from './CreateNotes.jsx'
 import Tech from './Tech.jsx'
+import EditNote from './EditNote.jsx'
 
 
 
@@ -15,5 +16,6 @@ export {
     UserDashboard,
     NoteDetails,
     CreateNotes,
-    Tech
+    Tech,
+    EditNote
 }

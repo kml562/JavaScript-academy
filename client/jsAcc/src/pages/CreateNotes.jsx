@@ -12,6 +12,7 @@ const formData = {
   content: "",
   author: "",
   tags: [],
+  url : ""
 };
 
 const CreateNotes = () => {
@@ -33,7 +34,6 @@ const CreateNotes = () => {
             }
           };
         const res = await axios.post('http://localhost:8080/api/post/post', updatedForm,options)
-        console.log(res.data)
         navigate('/')
     } catch (error) {
         alert(error.message)
@@ -71,6 +71,8 @@ const CreateNotes = () => {
             <textarea className="form_create_inp" type="text" onChange={handleChange} name="content" placeholder="Enter Note Content" />
             
             <input className="form_create_inp" type="text" onChange={handleTagChange} name="tags" placeholder="Enter Note Tags (comma-separated)" />
+
+            <input className="form_create_inp" type="text" onChange={handleChange} name="url" placeholder="Source Link 🔗 (Optional)" />
             
             <button className="form_submit" type="submit">Submit</button>
           </form>
