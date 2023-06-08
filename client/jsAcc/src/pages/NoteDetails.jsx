@@ -24,13 +24,24 @@ const NoteDetails = () => {
 
 
         const updateRating = async()=>{
+
+            console.log(selectedRate)
             try {
+                const filterObject = {
+                    title: noteDetail.title,
+                    description: noteDetail.description,
+                    content: noteDetail.content,
+                    tags: noteDetail.tags,
+                    rating : selectedRate===null ? 5 : selectedRate
+                }
+
+
                 const options = {
                     headers: {
                       'Authorization': `Bearer ${token}`
                     }
                   };
-                  const res = await axios.put(`http://localhost:8080/api/post/post/${id}`, {rating : selectedRate },options)
+                  const res = await axios.put(`http://localhost:8080/api/post/post/${id}`, filterObject,options)
 
                   console.log(res)
 
@@ -74,6 +85,9 @@ const NoteDetails = () => {
     };
 
 
+    // console.log(noteDetail)
+
+
   return (
     <div>
       <LogNavbar />
@@ -109,6 +123,12 @@ const NoteDetails = () => {
                 {noteDetail?.content}
             </div>
 
+            {noteDetail?.url && (
+                <div className="learn_more">
+                    <a className="learn_more_btn" target="blank" rel="noopener noreferrer" href={noteDetail?.url}>Read More</a>
+                </div>
+            )}
+
             <div className="tags">
             {noteDetail?.tags?.map((tag,index)=>(
                 <div className="tag" style={{ marginLeft: index !== 0 ? '0.5rem' : 0 }}>
@@ -118,7 +138,8 @@ const NoteDetails = () => {
             </div>
 
             <div className="rate">
-                <Rate className='rate_main' onChange={handleRateChange}/>
+                <Rate value={noteDetail?.rating} className='rate_main' onChange={handleRateChange}/>
+                {/* <Rate className='rate_main' onChange={handleRateChange} character={({ index }) => index + 1} /> */}
             </div>
         </div>
       <Footer />

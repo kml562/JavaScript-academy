@@ -11,6 +11,7 @@ const formData = {
   content: "",
   author: "",
   tags: [],
+  url : ""
 };
 
 
@@ -96,6 +97,8 @@ const EditNote = () => {
             <textarea className="form_create_inp" value={form.content} type="text" onChange={handleChange} name="content" placeholder="Enter Note Content" />
             
             <input className="form_create_inp" value={form.tags} type="text" onChange={handleTagChange} name="tags" placeholder="Enter Note Tags (comma-separated)" />
+
+            <input className="form_create_inp" type="text" onChange={handleChange} name="url" placeholder="Source Link 🔗 (Optional)" />
             
             <button className="form_submit" type="submit">Submit</button>
           </form>

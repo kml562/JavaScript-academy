@@ -101,6 +101,32 @@ export const deletePost = BigPromise(async (req, res, next) => {
     })
 })
 
+export const getTopic = BigPromise(async (req, res, next) => {
+    const {
+        id
+    } = req.params;
+
+    console.log(id)
+
+    const query = {
+        $or: [
+            { title: { $regex: id, $options: 'i' } }, 
+            { description: { $regex: id, $options: 'i' } }, 
+            { tags: { $regex: id, $options: 'i' } } 
+        ]
+    };
+
+    const posts = await Post.find(query);
+
+    if (posts.length===0) return next(new CustomError("Event Not Found", 400))
+
+    res.status(200).json({
+        success: true,
+        posts
+    })
+})
+
+
 
 export const createComment = BigPromise(async (req, res, next) => {
     const {
