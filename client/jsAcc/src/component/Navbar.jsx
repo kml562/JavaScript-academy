@@ -74,7 +74,7 @@ export default function Navbar() {
               textDecoration: "none",
               bg: useColorModeValue("gray.200", "gray.700"),
             }}
-            to={`/project`}
+          
           >
                    Project
               </LinkRoute>
