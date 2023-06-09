@@ -9,7 +9,7 @@ JS Academy is a collaborative project aimed at providing a platform for learning
 
   ### [Deployed Link](https://java-script-academy.vercel.app/)
  
-## Installation
+## Installation-
 
 To set up the project on your local system, follow the instructions below:
 
