@@ -7,7 +7,7 @@ JS Academy is a collaborative project aimed at providing a platform for learning
 - [Kamal](https://www.linkedin.com/in/kamal-bisht-552a17193/)
 - [Priyash](https://www.linkedin.com/in/priyansh-sharma-7b9520223/)
 
-  ### [Deployed Link](https://java-script-academy.vercel.app/)
+  ### [Deployed Link](https://jsaclass.netlify.app/)
  
 ## Installation-
 
