@@ -21,13 +21,8 @@ function App() {
       }else{
         navigate('/welcome');
       }
-    }else if(routeName === '/welcome'){
-      if(token){
-        navigate('/');
-      }else{
-        navigate('/welcome');
-      }
     }
+    
   },[routeName])
 
 
