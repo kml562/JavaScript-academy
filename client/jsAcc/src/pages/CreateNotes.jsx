@@ -19,6 +19,7 @@ const CreateNotes = () => {
   const [form, setForm] = useState(formData);
   const user = JSON.parse(localStorage.getItem('user')); 
   const token = localStorage.getItem('token'); // get token from local storage
+  const {VITE_URL} = import.meta.env;
 
   const navigate = useNavigate()
 
@@ -33,7 +34,7 @@ const CreateNotes = () => {
               'Authorization': `Bearer ${token}`
             }
           };
-        const res = await axios.post('http://localhost:8080/api/post/post', updatedForm,options)
+        const res = await axios.post(`${VITE_URL}/post/post`, updatedForm,options)
         navigate('/')
     } catch (error) {
         alert(error.message)
@@ -74,7 +75,7 @@ const CreateNotes = () => {
 
             <input className="form_create_inp" type="text" onChange={handleChange} name="url" placeholder="Source Link 🔗 (Optional)" />
             
-            <button className="form_submit" type="submit">Submit</button>
+            <button className="form_create_inp form_submit_btn" type="submit">Submit</button>
           </form>
         </div>
       </div>

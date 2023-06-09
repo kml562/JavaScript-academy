@@ -12,11 +12,35 @@ import {
   createIcon,
   useColorModeValue,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-
+import { Col, Row, Statistic } from 'antd';
 
 
 export default function HompageCom() {
+
+  const [userCount, setUserCount] = useState()
+  const {VITE_URL} = import.meta.env;
+
+
+  useEffect(()=>{
+    const fetchUsers = async()=>{
+      try {
+        const res = await axios.get(`${VITE_URL}/user/getAllUsers`)
+        setUserCount(res.data.users.length)
+
+      } catch (error) {
+        alert(error.message)
+        console.log(error.message)
+      }
+    }
+    fetchUsers()
+  },[])
+
+
+
+
   return (
     <>
 <Container maxW={"7xl"}>
@@ -69,10 +93,11 @@ export default function HompageCom() {
           >
            <Link to={`/login`}>
             <Button
-                rounded={"full"}
+                rounded={"lg"}
                 size={"lg"}
                 fontWeight={"normal"}
                 px={6}
+                py={8}
                 colorScheme={"red"}
                 bg={"red.400"}
                 _hover={{ bg: "red.500" }}
@@ -80,6 +105,21 @@ export default function HompageCom() {
                 Get started
               </Button>
            </Link>
+
+           <div >
+            <Button
+                rounded={"lg"}
+                size={"lg"}
+                fontWeight={"normal"}
+                px={6}
+                py={8}
+                colorScheme={"red"}
+                bg={"gray.200"}
+                _hover={{ bg: "red.500" }}
+              >
+                <Statistic title="Active Users" className="user_count" value={userCount}  />
+              </Button>
+           </div>
             
           </Stack>
         </Stack>

@@ -20,12 +20,12 @@ const NoteDetails = () => {
     const readingSpeed = 200;
     const wordCount = noteDetail?.content.trim().split(/\s+/).length;
     const readingTimeMinutes = Math.ceil(wordCount / readingSpeed);
+    const {VITE_URL} = import.meta.env;
 
 
 
         const updateRating = async()=>{
 
-            console.log(selectedRate)
             try {
                 const filterObject = {
                     title: noteDetail.title,
@@ -41,9 +41,8 @@ const NoteDetails = () => {
                       'Authorization': `Bearer ${token}`
                     }
                   };
-                  const res = await axios.put(`http://localhost:8080/api/post/post/${id}`, filterObject,options)
+                  const res = await axios.put(`${VITE_URL}/post/post/${id}`, filterObject,options)
 
-                  console.log(res)
 
                   if(res.status===200){
                     navigate('/')
@@ -68,7 +67,7 @@ const NoteDetails = () => {
                       'Authorization': `Bearer ${token}`
                     }
                   };
-                  const res = await axios.get(`http://localhost:8080/api/post/post/${id}`,options)
+                  const res = await axios.get(`${VITE_URL}/post/post/${id}`,options)
 
                   setNoteDetail(res.data.post)
             } catch (error) {
@@ -85,7 +84,6 @@ const NoteDetails = () => {
     };
 
 
-    // console.log(noteDetail)
 
 
   return (
@@ -96,7 +94,7 @@ const NoteDetails = () => {
                 {noteDetail?.title}
             </div>
 
-            <div className="authorDetails">
+            <Link to={`/user/${noteDetail?.author?._id}`} className="authorDetails">
                 <img src={ravatar} alt="" className="user_img_details" />
                 <div className="author_details_name">
                     <div className="author_nme_det">
@@ -117,7 +115,7 @@ const NoteDetails = () => {
                         Edit Notes
                     </Link>
                 )}
-            </div>
+            </Link>
 
             <div className="content">
                 {noteDetail?.content}

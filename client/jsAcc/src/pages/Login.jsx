@@ -16,7 +16,12 @@ import axios from 'axios';
 import Navbar from '../component/Navbar';
 import { useState } from 'react';
 import { Link as LinkRoute, useLocation, useNavigate } from 'react-router-dom'
-
+import {
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+} from '@chakra-ui/react'
 
 const formData = {
   email: '',
@@ -53,6 +58,7 @@ export default function Login() {
 
       } catch (error) {
       alert("Please Enter Corrrect Email or password")
+      
       setLoading(false)
       console.log(error)
     }

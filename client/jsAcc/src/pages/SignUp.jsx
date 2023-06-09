@@ -30,6 +30,7 @@ export default function Signup() {
     name : "",
     email: '',
     password: '',
+    socialmedia : ''
   });
 
   const location = useLocation();
@@ -134,6 +135,16 @@ export default function Signup() {
                       </Button>
                     </InputRightElement>
                   </InputGroup>
+                </FormControl>
+
+                <FormControl id="socialmedia" isRequired>
+                  <FormLabel>Social Media Link (Optional)</FormLabel>
+                  <Input
+                    type="text"
+                    value={formData.socialmedia}
+                    onChange={handleChange}
+                    name="socialmedia"
+                  />
                 </FormControl>
                 <Stack spacing={10} pt={2}>
                   <Button

@@ -20,6 +20,7 @@ const EditNote = () => {
   const user = JSON.parse(localStorage.getItem('user')); 
   const token = localStorage.getItem('token'); // get token from local storage
   const { id } = useParams()
+  const {VITE_URL} = import.meta.env;
 
   const navigate = useNavigate()
 
@@ -31,13 +32,14 @@ const EditNote = () => {
             'Authorization': `Bearer ${token}`
           }
         };
-        const data = await axios.get(`http://localhost:8080/api/post/post/${id}`,options)
+        const data = await axios.get(`${VITE_URL}/post/post/${id}`,options)
         const formData = data.data.post
         setForm({
           title : formData.title,
           description : formData.description,
           content : formData.content,
-          tags : formData.tags
+          tags : formData.tags,
+          url : formData.url
         })
       } catch (error) {
         alert(error)
@@ -56,8 +58,7 @@ const EditNote = () => {
               'Authorization': `Bearer ${token}`
             }
           };
-        const res = await axios.put(`http://localhost:8080/api/post/post/${id}`, updatedForm,options)
-        console.log(res)
+        const res = await axios.put(`${VITE_URL}/post/post/${id}`, updatedForm,options)
         navigate('/')
     } catch (error) {
         alert(error.message)
@@ -79,7 +80,6 @@ const EditNote = () => {
   };
 
 
-
   return (
     <div>
       <LogNavbar />
@@ -98,7 +98,7 @@ const EditNote = () => {
             
             <input className="form_create_inp" value={form.tags} type="text" onChange={handleTagChange} name="tags" placeholder="Enter Note Tags (comma-separated)" />
 
-            <input className="form_create_inp" type="text" onChange={handleChange} name="url" placeholder="Source Link 🔗 (Optional)" />
+            <input className="form_create_inp" type="text" value={form.url} onChange={handleChange} name="url" placeholder="Source Link 🔗 (Optional)" />
             
             <button className="form_submit" type="submit">Submit</button>
           </form>

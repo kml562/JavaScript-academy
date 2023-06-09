@@ -24,12 +24,26 @@ import {
 } from "@chakra-ui/icons";
 import logo from "../png/logo.png";
 import { Link as LinkRouter } from "react-router-dom";
-
+import { useState } from "react";
+import { BsSearch } from 'react-icons/bs'
 
 
 export default function LogNavbar() {
-  const { isOpen, onToggle } = useDisclosure();
-  const user = JSON.parse(localStorage.getItem('user')); 
+  const { isOpen, onToggle } = useDisclosure()
+  const [searchTerm, serSearchTerm] = useState("")
+  const user = JSON.parse(localStorage.getItem('user'))
+
+
+
+  const handleSearch = async(e)=>{
+    try {
+      e.preventDefault();
+      console.log(searchTerm)
+    } catch (error) {
+      alert(error.message);
+      console.log(error.message)
+    }
+  }
 
 
   return (
@@ -59,16 +73,22 @@ export default function LogNavbar() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-              <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+            <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
              
-            <LinkRouter to="/"> 
-              <Image  textAlign={useBreakpointValue({ base: "center", md: "left" })}  h="50px" src={logo} borderRadius={40}  />
-            </LinkRouter>
+              <LinkRouter to="/"> 
+                <Image  textAlign={useBreakpointValue({ base: "center", md: "left" })}  h="50px" src={logo} borderRadius={40}  />
+              </LinkRouter>
+              <Flex display={{ base: "none", md: "flex" }} ml={10}>
+                <DesktopNav />
+              </Flex>
+              <Flex  display={{ base: "none", md: "flex" }} ml={10}  justify={"center"}
+                align={"center"}>
 
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
-          </Flex>
+              
+              </Flex>
         </Flex>
+
+       
 
         <Stack
           flex={{ base: 1, md: 0 }}
@@ -88,7 +108,7 @@ export default function LogNavbar() {
               bg: "pink.300",
             }}
           >
-           <LinkRouter to="/udboard" className=" ">
+           <LinkRouter to={`/user/${user?._id}`} className=" ">
             {user?.name}
            </LinkRouter>
 
@@ -110,6 +130,24 @@ export default function LogNavbar() {
               CREATE
             </LinkRouter>
           </Button>
+
+
+          <Button
+            as={"a"}
+            display={{ base: "none", md: "inline-flex" }}
+            fontSize={"sm"}
+            fontWeight={600}
+            color={"white"}
+            bg={"green.400"}
+            _hover={{
+              bg: "gray.300",
+            }}
+          >
+            <LinkRouter to="/search" className="">
+              Search
+            </LinkRouter>
+          </Button>
+
 
          
         </Stack>
@@ -220,6 +258,7 @@ const MobileNav = () => {
 
 const MobileNavItem = ({ label, children, to }) => {
   const { isOpen, onToggle } = useDisclosure();
+  const user = JSON.parse(localStorage.getItem('user')); 
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
@@ -233,14 +272,25 @@ const MobileNavItem = ({ label, children, to }) => {
         }}
       >
 
-        <LinkRouter to={`${to}`} className="">
+        {label !== 'Dashboard' ? (
+          <LinkRouter to={`${to}`} className="">
             <Text
               fontWeight={600}
               color={useColorModeValue("gray.600", "gray.200")}
             >
             {label}
           </Text>
-        </LinkRouter>
+          </LinkRouter>
+        ):(
+          <LinkRouter to={`/user/${user?._id}`} className="">
+            <Text
+              fontWeight={600}
+              color={useColorModeValue("gray.600", "gray.200")}
+            >
+            {label}
+          </Text>
+          </LinkRouter>
+        )}
         {children && (
           <Icon
             as={ChevronDownIcon}
@@ -284,6 +334,10 @@ const MOBILE_MORE =[
   },
   {
     label : "Create",
-    to : "/tech/create"
+    to : "/create"
+  },
+  {
+    label : "Search",
+    to : "/search"
   }
 ]

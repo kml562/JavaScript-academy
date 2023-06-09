@@ -106,7 +106,6 @@ export const getTopic = BigPromise(async (req, res, next) => {
         id
     } = req.params;
 
-    console.log(id)
 
     const query = {
         $or: [
@@ -116,15 +115,32 @@ export const getTopic = BigPromise(async (req, res, next) => {
         ]
     };
 
-    const posts = await Post.find(query);
+    const posts = await Post.find(query).populate('author');
 
-    if (posts.length===0) return next(new CustomError("Event Not Found", 400))
 
     res.status(200).json({
         success: true,
         posts
     })
 })
+
+export const getNotesOfUser = BigPromise(async (req, res, next) => {
+    const {
+        aid
+    } = req.params;
+
+
+    const posts = await Post.find({author : aid}).populate('author');;
+
+
+    res.status(200).json({
+        success: true,
+        posts
+    })
+})
+
+
+
 
 
 
