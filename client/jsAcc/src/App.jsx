@@ -27,7 +27,7 @@ function App() {
       }else{
         navigate('/welcome');
       }
-    } else if (routeName === '/welcome') {
+    } else{
       navigate('/welcome')
     }
   },[routeName])
