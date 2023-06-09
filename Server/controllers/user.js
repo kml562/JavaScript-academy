@@ -16,7 +16,7 @@ dotenv.config();
 
 
 export const signUp = BigPromise(async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { name, email, password,socialmedia } = req.body;
 
 
   if (!email || !name || !password) {
@@ -29,7 +29,7 @@ export const signUp = BigPromise(async (req, res, next) => {
   // if (!isValidPassword(password))return next(new CustomError("Please enter a valid password", 400));
     
   
-  const user = await User.create({ name, email , password });
+  const user = await User.create(req.body);
 
 
 
@@ -37,9 +37,6 @@ export const signUp = BigPromise(async (req, res, next) => {
 });
 
 
-
-
-// export const signUp = BigPromise(async (req, res, next) => {
 //     try { const { name, email, password } = req.body;
   
 //     if (!email || !name || !password) {return res.status(400).json({ message: 'Invalid name email or password' })
@@ -131,3 +128,14 @@ export const getAllUsers = BigPromise(async (req, res, next) => {
 
   res.status(200).json({ success: true, users: allUsers });
 });
+
+export const getSingleUser = BigPromise(async (req, res, next) => {
+  const {id} = req.params
+  console.log(id)
+  const user = await User.findById(id);
+
+  res.status(200).json({ success: true, user: user });
+});
+
+
+

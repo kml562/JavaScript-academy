@@ -21,12 +21,13 @@ import { Col, Row, Statistic } from 'antd';
 export default function HompageCom() {
 
   const [userCount, setUserCount] = useState()
+  const {VITE_URL} = import.meta.env;
 
 
   useEffect(()=>{
     const fetchUsers = async()=>{
       try {
-        const res = await axios.get('http://localhost:8080/api/user/getAllUsers')
+        const res = await axios.get(`${VITE_URL}/user/getAllUsers`)
         setUserCount(res.data.users.length)
 
       } catch (error) {

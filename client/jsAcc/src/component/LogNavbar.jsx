@@ -108,7 +108,7 @@ export default function LogNavbar() {
               bg: "pink.300",
             }}
           >
-           <LinkRouter to="/udboard" className=" ">
+           <LinkRouter to={`/user/${user?._id}`} className=" ">
             {user?.name}
            </LinkRouter>
 
@@ -258,6 +258,7 @@ const MobileNav = () => {
 
 const MobileNavItem = ({ label, children, to }) => {
   const { isOpen, onToggle } = useDisclosure();
+  const user = JSON.parse(localStorage.getItem('user')); 
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
@@ -271,14 +272,25 @@ const MobileNavItem = ({ label, children, to }) => {
         }}
       >
 
-        <LinkRouter to={`${to}`} className="">
+        {label !== 'Dashboard' ? (
+          <LinkRouter to={`${to}`} className="">
             <Text
               fontWeight={600}
               color={useColorModeValue("gray.600", "gray.200")}
             >
             {label}
           </Text>
-        </LinkRouter>
+          </LinkRouter>
+        ):(
+          <LinkRouter to={`/user/${user?._id}`} className="">
+            <Text
+              fontWeight={600}
+              color={useColorModeValue("gray.600", "gray.200")}
+            >
+            {label}
+          </Text>
+          </LinkRouter>
+        )}
         {children && (
           <Icon
             as={ChevronDownIcon}
@@ -322,7 +334,7 @@ const MOBILE_MORE =[
   },
   {
     label : "Create",
-    to : "/tech/create"
+    to : "/create"
   },
   {
     label : "Search",

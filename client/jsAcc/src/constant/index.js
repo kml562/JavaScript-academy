@@ -14,6 +14,9 @@ import {
   pinzeal,
   pexelai,
   uae,
+  track,
+  yts,
+  kmlblog,
 } from "../assets";
 
 
@@ -159,6 +162,70 @@ export const projects = [{
   },
 
   {
+    name: "Blogger's",
+    description: "Blogging Application backend where you can create, update, delete, get authors, blogs, apply filters on it.",
+    tags: [{
+        name: "Mongodb",
+        color: "text-green-500",
+      },
+      {
+        name: "Nodejs",
+        color: "text-blue-500",
+      },
+      {
+        name: "Expressjs",
+        color: "text-purple-500",
+      },
+    ],
+    image: kmlblog,
+    source_code_link: "https://github.com/kml562/bloging",
+    source_proj_link: "https://github.com/kml562/bloging",
+  },
+  
+  {
+    name: "Youtube 4.0",
+    description: "Youtube clone made using new HTML,CSS,JS with amazing UI/UX.",
+    tags: [{
+        name: "HTML",
+        color: "text-green-500",
+      },
+      {
+        name: "CSS",
+        color: "text-blue-500",
+      },
+      {
+        name: "Javascript",
+        color: "text-purple-500",
+      },
+    ],
+    image: yts,
+    source_code_link: "https://github.com/kml562/youtube",
+    source_proj_link: "https://stellular-rabanadas-cab451.netlify.app/",
+  },
+
+  {
+    name: "T-Track - Track your Productivity",
+    description: "Youtube clone made using new HTML,CSS,JS with amazing UI/UX.",
+    tags: [{
+        name: "HTML",
+        color: "text-green-500",
+      },
+      {
+        name: "CSS",
+        color: "text-blue-500",
+      },
+      {
+        name: "Javascript",
+        color: "text-purple-500",
+      },
+    ],
+    image: track,
+    source_code_link: "https://t-track.vercel.app/index.html",
+    source_proj_link: "https://github.com/kml562/T-Track",
+  },
+
+
+  {
     name: "Ukenko",
     description: "Fitness app in which you can find 1000's of workout with proper guide and tutorial videos, motivation quotes, fitness calculator and have amazing UI, very Minimal and effective website.",
     tags: [{
@@ -176,7 +243,7 @@ export const projects = [{
     ],
     image: ukenko,
     source_code_link: "https://github.com/Priyanshsharma21/Ukenko",
-    source_proj_link: "https://ukenko-fit.netlify.app/",
+    source_proj_link: "https://ukenko.netlify.app/",
   },
 
   {

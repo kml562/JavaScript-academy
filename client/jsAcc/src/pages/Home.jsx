@@ -8,6 +8,7 @@ import { NotesCard } from '../component'
     const [posts, setPosts] = useState()
   const token = localStorage.getItem('token'); // get token from local storage
 
+  const {VITE_URL} = import.meta.env;
 
   const getPosts = async()=>{
     try {
@@ -16,7 +17,7 @@ import { NotesCard } from '../component'
           'Authorization': `Bearer ${token}`
         }
       };
-      const res = await axios.get("http://localhost:8080/api/post/posts",options)
+      const res = await axios.get(`${VITE_URL}/post/posts`,options)
 
       setPosts(res.data.posts)
     } catch (error) {

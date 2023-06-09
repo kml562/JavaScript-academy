@@ -61,23 +61,22 @@ export default function Navbar() {
                 textDecoration: "none",
                 bg: useColorModeValue("gray.200", "gray.700"),
               }}
-              href={"/dashboard"}
               to="/dashboard"
             >
-    {"Dashboard"}
+                Dashboard
               </LinkRoute>
               <LinkRoute
-    px={2}
-    to="/project"
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}
-  >
-    {"Project"}
+            px={2}
+            to="/project"
+            py={1}
+            rounded={"md"}
+            _hover={{
+              textDecoration: "none",
+              bg: useColorModeValue("gray.200", "gray.700"),
+            }}
+            to={`/project`}
+          >
+                   Project
               </LinkRoute>
             <LinkRoute
               px={2}
@@ -129,7 +128,31 @@ export default function Navbar() {
             <Stack as={"nav"} spacing={4}>
               
 
-<Link
+        <LinkRoute
+          px={2}
+          py={1}
+          rounded={"md"}
+          _hover={{
+            textDecoration: "none",
+            bg: useColorModeValue("gray.200", "gray.700"),
+          }}
+          to={"/dashboard"}
+          >
+          {"Dashboard"}
+          </LinkRoute>
+            <LinkRoute
+        px={2}
+        py={1}
+        rounded={"md"}
+        _hover={{
+          textDecoration: "none",
+          bg: useColorModeValue("gray.200", "gray.700"),
+        }}
+        to={"/project"}
+        >
+        {"Project"}
+                  </LinkRoute>
+          <LinkRoute
 px={2}
 py={1}
 rounded={"md"}
@@ -137,34 +160,10 @@ _hover={{
   textDecoration: "none",
   bg: useColorModeValue("gray.200", "gray.700"),
 }}
-href={"/dashboard"}
->
-{"Dashboard"}
-          </Link>
-          <Link
-px={2}
-py={1}
-rounded={"md"}
-_hover={{
-  textDecoration: "none",
-  bg: useColorModeValue("gray.200", "gray.700"),
-}}
-href={"#"}
->
-{"Project"}
-          </Link>
-          <Link
-px={2}
-py={1}
-rounded={"md"}
-_hover={{
-  textDecoration: "none",
-  bg: useColorModeValue("gray.200", "gray.700"),
-}}
-href={"/team"}
+to={"/team"}
 >
 {"Team"}
-</Link>
+</LinkRoute>
               
             </Stack>
           </Box>

@@ -69,15 +69,20 @@ import surbhi from './Create a high resolution artwork of Anime Girl is .jpg'
 import javed from './architecture photo modern fachwerk footbal field w.jpg'
 
 
+import track from './track.jpg'
+import yts from './youtube logo.jpg'
+import kmlblog from './kmlblog.jpg'
+
+
 
 export {
     ava1,
     ava2,
     ava3,
     ava4,
-
-
-
+    track,
+    yts,
+    kmlblog,
     express,
   fastify,
   nextjs,

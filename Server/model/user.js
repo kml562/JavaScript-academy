@@ -32,7 +32,11 @@ const userSchema = new Schema({
         required : [true, 'Please enter your password'],
         minLength : [7,'Password length should be greater than 7 characters'],
         select : false,        
-    }
+    },
+
+    socialmedia : {
+        type : String,
+    },
 
 }, {timestamps: true})
 
