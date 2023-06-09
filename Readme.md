@@ -7,6 +7,8 @@ JS Academy is a collaborative project aimed at providing a platform for learning
 - [Kamal](https://www.linkedin.com/in/kamal-bisht-552a17193/)
 - [Priyash](https://www.linkedin.com/in/priyansh-sharma-7b9520223/)
 
+  ### [Deployed Link](https://java-script-academy.vercel.app/)
+ 
 ## Installation
 
 To set up the project on your local system, follow the instructions below:
@@ -61,6 +63,24 @@ The following dependencies are used in the backend:
 - Express
 - JSON Web Token (JWT)
 - bcrypt
+
+# 1.Landing Page ⤵️
+<img width="946" alt="image" src="https://github.com/kml562/JavaScript-academy/blob/main/png/home.png">
+
+# 2. Team Member ⤵️
+<img width="946" alt="image" src="https://github.com/kml562/JavaScript-academy/blob/main/png/Proj.png">
+
+# 3. Homepage Page ⤵️
+<img width="946" alt="image" src="https://github.com/kml562/JavaScript-academy/blob/main/png/Screenshot%202023-06-10%20001746.png">
+
+#4. Users Page ⤵️
+<img width="946" alt="image" src="https://github.com/kml562/JavaScript-academy/blob/main/png/Screenshot%202023-06-10%20001813.png">
+
+#5. search ⤵️
+<img width="946" alt="image" src="https://github.com/kml562/JavaScript-academy/blob/main/png/Screenshot%202023-06-10%20001910.png">
+
+
+
 
 ## Credits
 
