@@ -138,4 +138,13 @@ export const getSingleUser = BigPromise(async (req, res, next) => {
 });
 
 
+export const getAllUser = async (req, res) => {
+  try {
+    let data = await User.find();
+    res.status(200).json({ success: true, user: data });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
