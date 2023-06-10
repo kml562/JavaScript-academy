@@ -73,10 +73,10 @@ The following dependencies are used in the backend:
 # 3. Homepage Page ⤵️
 <img width="946" alt="image" src="https://github.com/kml562/JavaScript-academy/blob/main/png/Screenshot%202023-06-10%20001746.png">
 
-#4. Users Page ⤵️
+# 4. Users Page ⤵️
 <img width="946" alt="image" src="https://github.com/kml562/JavaScript-academy/blob/main/png/Screenshot%202023-06-10%20001813.png">
 
-#5. search ⤵️
+# 5. search ⤵️
 <img width="946" alt="image" src="https://github.com/kml562/JavaScript-academy/blob/main/png/Screenshot%202023-06-10%20001910.png">
 
 
