@@ -53,7 +53,7 @@ The following dependencies are used in the frontend:
 - Vite
 - Chakra UI
 - Ant Design 
-- premier motion
+- Axios 
 
 The following dependencies are used in the backend:
 
